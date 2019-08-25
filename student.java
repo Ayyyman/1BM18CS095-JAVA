@@ -5,26 +5,25 @@ class Student{
   public String name;
   public int credits[] = new int[5];
   public int marks[] = new int[5];
-  public float SGPA;
+  public float sgpa;
   public int totCredits;
   public int i;
 
   public void inputData(){
     Scanner S = new Scanner(System.in);
 
-    System.out.println("Enter the following:");
-    System.out.print("USN:");
-    usn = S.nextLine();
-    System.out.print("Name:");
+    System.out.print("Enter your Name:");
     name = S.nextLine();
-    System.out.println("\nEnter Marks for:");
+    System.out.print("Enter your USN:");
+    usn = S.nextLine();
+    System.out.println("\nEnter your Marks:");
     for(i=0; i<5; i++){
-      System.out.print("\tSubject"+(i+1)+": ");
+      System.out.print("\tSubject "+(i+1)+": ");
       marks[i]=S.nextInt();
     }
-    System.out.println("\nEnter Credits for:");
+    System.out.println("\nEnter the Credits for each Subject :");
     for(i=0; i<5; i++){
-      System.out.print("\tSubject"+(i+1)+": ");
+      System.out.print("\tSubject "+(i+1)+": ");
       credits[i]=S.nextInt();
       totCredits += credits[i];
     }
@@ -33,31 +32,31 @@ class Student{
   public void calcSGPA(){
     for(i=0; i<5; i++){
       if(marks[i] >= 90)
-        SGPA += credits[i]*10;
+        sgpa += credits[i]*10;
       else if(marks[i] >= 75)
-        SGPA += credits[i]*9;
+        sgpa += credits[i]*9;
       else if(marks[i] >= 60)
-        SGPA += credits[i]*8;
+       sgpa += credits[i]*8;
       else if(marks[i] >= 50)
-        SGPA += credits[i]*7;
+        sgpa += credits[i]*7;
       else if(marks[i] >= 45)
-        SGPA += credits[i]*5;
+        sgpa += credits[i]*5;
       else if(marks[i] >= 40)
-        SGPA += credits[i]*4;
+        sgpa += credits[i]*4;
       else
         break;
     }
-    SGPA /= totCredits;
+    sgpa /= totCredits;
   }
 
   public void display(){
     System.out.println("\n-------DETAILS-------");
     System.out.println("Name: "+name+"\nUSN: "+usn);
     System.out.println("Marks:");
-    for(i=0; i<5; i++){
-      System.out.println("\tSubject"+i+": "+marks[i]);
+    for(i=1; i<=5; i++){
+      System.out.println("\tSubject "+i+": "+marks[i]);
     }
-    System.out.println("SGPA = "+SGPA);
+    System.out.println("SGPA = "+sgpa);
     System.out.println("---------------------");
   }
 
